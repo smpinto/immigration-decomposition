@@ -1,0 +1,255 @@
+%-----------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%-----------------------------------------------------
+
+\documentclass[
+    abstract=true,
+    11pt,
+    letterpaper,
+    oneside,
+    headinclude,
+    footinclude,
+    BCOR=5mm,
+]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+%\usepackage{mathpazo}
+%\usepackage{newtxtext}
+%\usepackage{newtxmath}
+%\usepackage[scaled=0.9]{helvet}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs} % For professional-looking tables
+\usepackage{multirow}
+\usepackage[section]{placeins} % To keep figures within sections
+\usepackage[sort&compress,numbers]{natbib}
+\usepackage[
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=black,
+]{hyperref}
+\usepackage{amsthm}
+\usepackage[stable,bottom]{footmisc}
+\usepackage{float} % For [H] placement specifier in figures
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+
+
+\hyphenation{Fortran hy-phen-ation} % Specify custom hyphenation points in words with dashes where you would like hyphenation to occur, or alternatively, don't put any dashes in a word to stop hyphenation altogether
+
+%-----------------------------------------------
+%	TITLE AND AUTHOR(S)
+%-----------------------------------------------
+
+%\title{\normalfont\spacedallcaps{}} % The article title
+%\author{\spacedlowsmallcaps{John Smith* \& James Smith\textsuperscript{1}}} % The article author(s) - author affiliations need to be specified in the AUTHOR AFFILIATIONS block
+
+\title{Immigration and the growth of \\ domestic labor force} % The article title
+
+\author{Santiago Pinto} % The article author(s) - author affiliations need to be specified in the AUTHOR AFFILIATIONS block
+
+\date{\today} % An optional date to appear under the author(s)
+
+%----------------------------------------------------------------------------------------
+\setlength{\tabcolsep}{4pt} % Default value: 6pt
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	HEADERS
+%----------------------------------------------------------------------------------------
+
+% \renewcommand{\sectionmark}[1]{\markright{\spacedlowsmallcaps{#1}}} % The header for all pages (oneside) or for even pages (twoside)
+% %\renewcommand{\subsectionmark}[1]{\markright{\thesubsection~#1}} % Uncomment when using the twoside option - this modifies the header on odd pages
+% \lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray} \vline}\color{halfgray}\hspace{0.5em}\rightmark\hfil}} % The header style
+
+% \pagestyle{scrheadings} % Enable the headers specified in this block
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS & LISTS OF FIGURES AND TABLES
+%----------------------------------------------------------------------------------------
+
+\maketitle % Print the title/author/date block
+
+%\setcounter{tocdepth}{2} % Set the depth of the table of contents to show sections and subsections only
+%
+%\tableofcontents % Print the table of contents
+%
+%\listoffigures % Print the list of figures
+%
+%\listoftables % Print the list of tables
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+%\section*{Abstract} % This section will not appear in the table of contents due to the star (\section*)
+
+%\begin{abstract}
+%\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	AUTHOR AFFILIATIONS
+%----------------------------------------------------------------------------------------
+
+%{\let\thefootnote\relax\footnotetext{\textsuperscript{1} \textit{Federal Reserve Bank of St. Louis.}}}
+%{\let\thefootnote\relax\footnotetext{* \textit{Federal Reserve Bank of Richmond.}}}
+
+%{\let\thefootnote\relax\footnotetext{* \textit{Department of Biology, University of Examples, London, United Kingdom}}}
+%
+%{\let\thefootnote\relax\footnotetext{\textsuperscript{1} \textit{Department of Chemistry, University of Examples, London, United Kingdom}}}
+
+%----------------------------------------------------------------------------------------
+
+%\newpage % Start the article content on the second page, remove this if you have a longer abstract that goes onto the second page
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\section{A simple decomposition}
+
+Suppose that labor force for group $i$ is a proportion $\alpha^i(t)$ of the total population of that group,
+\begin{eqnarray}
+L^i(t) = \alpha^i(t) P^i(t), \quad i = N \mbox{ (native)}, F \mbox{ (foreign born)}, \nonumber
+\end{eqnarray}
+where $\alpha^i$ can be broadly interpreted as the labor force participation rate of group $i$.\footnote{Strictly speaking, the labor force participation rate for group $i$ would be defined as $CLF^i(t)/P_{16+}^i(t)$, where $CLF^i(t)$ is civilian labor force for group $i$, and $P_{16+}^i(t)$ total population of group $i$ between 16 and 65 years of age. An alternative and finer decomposition that accounts for changes in the proportion $P_{16+}^i(t)$ in considered in Section \ref{sec:a_finer_decomposition}.} Labor force growth rate for group $i$ can then be expressed as
+\begin{eqnarray}
+\frac{d \ln(L^i(t))}{dt} &=& \underbrace{\frac{d \ln(\alpha^i(t))}{dt}}_{\mbox{\tiny labor force participation growth rate}} + \underbrace{\frac{d \ln(P^i(t))}{dt}}_{\mbox{\tiny population growth rate}} \nonumber.
+\end{eqnarray}
+When $i = F$,
+\begin{eqnarray}
+\frac{d \ln(P^{F}(t))}{dt} = \frac{1}{P^{F}(t)} \frac{d P^{F}(t)}{dt} = \frac{IM(t)}{P^{F}(t)}. \nonumber
+\end{eqnarray}
+
+Total labor force is $L(t) = L^N(t) + L^{F}(t)$.
+The growth rate of $L(t)$ can be decomposed as follows:
+\begin{equation}
+\begin{array}{lcccc}
+  \dfrac{d \ln(L(t))}{dt}&=& w^N(t) \, \dfrac{d \ln(L^N(t))}{dt} &+& w^{F}(t) \, \dfrac{d \ln(L^{F}(t))}{dt} \nonumber \\
+  &=& w^N(t) \left[ \dfrac{d \ln(\alpha^N(t))}{dt} + \dfrac{d \ln(P^N(t))}{dt} \right] &+& w^{F}(t) \left[ \dfrac{d \ln(\alpha^{F}(t))}{dt} + \dfrac{d \ln(P^{F}(t))}{dt} \right] \nonumber
+\end{array}
+\end{equation}
+where $w^i(t) = L^i(t)/L(t)$.
+In other words,
+\begin{eqnarray} \label{decomposition}
+  \frac{d \ln(L(t))}{dt}&=& \underbrace{w^N(t) \frac{d \ln(\alpha^N(t))}{dt}}_{N(1)} + \underbrace{w^N(t) \frac{d \ln(P^N(t))}{dt}}_{N(2)} + \underbrace{w^{F}(t) \frac{d \ln(\alpha^{F}(t))}{dt}}_{F(1)} + \underbrace{w^{F}(t) \frac{IM(t))}{P^{F}(t)}}_{F(2)}.
+\end{eqnarray}
+While expressions N(1) and F(1) account for changes in labor force participation rates for each group $i$, N(2) and F(2) account for population changes of each group on the labor force growth rate. We will focus on expression (4), since this terms specifically captures the direct impact of immigration on labor force growth.
+
+Using 2006-2017 data (and using average annual growth rates during the period 2006--2017), the previous decomposition can be quantified as follows:\footnote{The data used here is from the American Community Survey (ACS).}
+\begin{eqnarray}
+  \underbrace{\frac{d \ln(L(t))}{dt}}_{0.72\%}&=& \underbrace{w^N(t) \frac{d \ln(\alpha^N(t))}{dt}}_{-0.08\%} + \underbrace{w^N(t) \frac{d \ln(P^N(t))}{dt}}_{0.54\%} + \underbrace{w^{F}(t) \frac{d \ln(\alpha^{F}(t))}{dt}}_{0.01\%} + \underbrace{w^{F}(t) \frac{IM(t))}{P^{F}(t)}}_{0.25\%}. \nonumber
+\end{eqnarray}
+In other words, the term that includes immigration, F(2), explains $0.25$ percentage points of the $0.72\%$ average annual labor force growth rate.
+
+The following graph shows the same decomposition by year, during the period 2006-2017. The numbers (1) -- (4) in the graph correspond to those in equation (\ref{decomposition}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/decomposition.pdf}
+    \caption{Annual labor growth rate decomposition}
+    \label{fig:lpf_growth}
+\end{figure}
+
+\section{A finer decomposition of the labor force growth rate} \label{sec:a_finer_decomposition}
+Consider an alternative decomposition that considers both changes in labor force participation and changes in the proportion of individuals between 16 and 65 years old. Specifically,
+\begin{eqnarray}
+L(t) &=& L^N(t) + L^{F}(t) \nonumber \\
+&=& \alpha^N_1(t) P_{16+}^N(t) + \alpha^{F}_1(t) P_{16+}^{F}(t) \nonumber \\
+&=& \alpha^N_1(t) \alpha^N_2(t) P^N(t) + \alpha^{F}_1(t) \alpha^{F}_2(t)P^{F}(t), \nonumber
+\end{eqnarray}
+where
+\begin{eqnarray}
+\alpha^i_1(t) = \frac{L^i(t)}{P_{16+}^i(t)}, \quad \alpha^i_2(t) = \frac{P_{16+}^i(t)}{P^i(t)}, \nonumber
+\end{eqnarray}
+and $P_{16+}(t)$ is the population in group $i$ between 16 and 65 years of age.
+Note that while $\alpha^i_1(t)$ captures pure changes in labor force participation, $\alpha^i_2(t)$ is associated with changes in the demographics of each group. Now, the growth rate of $L(t)$ can be decomposed as follows:
+\begin{eqnarray}
+  \frac{d \ln(L(t))}{dt}&=& w^N(t) \frac{d \ln(L^N(t))}{dt} + w^{F}(t) \frac{d \ln(L^{F}(t))}{dt} \nonumber \\
+  &=& \underbrace{w^N(t) \frac{d \ln(\alpha_1^N(t))}{dt}}_{N(1.1)} + \underbrace{w^N(t) \frac{d \ln(\alpha_2^N(t))}{dt}}_{N(1.2)} + \underbrace{w^N(t) \frac{d \ln(P^N(t))}{dt}}_{N(2)} \nonumber \\
+  &+& \underbrace{w^{F}(t) \frac{d \ln(\alpha_1^{F}(t))}{dt}}_{F(1.1)} + \underbrace{w^{F}(t) \frac{d \ln(\alpha_2^{F}(t))}{dt}}_{F(1.2)} + \underbrace{w^{F}(t) \frac{d \ln(P^{F}(t))}{dt}}_{F(2)}. \nonumber
+\end{eqnarray}
+
+Table \ref{tab:Im_Scenarios} below examines how different immigration scenarios, low, average, and high, would affect the domestic labor force growth rate, assuming everything else remains constant. The average immigration scenario is described as one in which the annual immigration rate (the annual growth rate of foreign-born population, $d\ln(P^F(t))/dt$ $=$ $IM(t)/P^F(t)$) is equal to the average annual immigration rate during the period 2006-2017 ($d\ln(P^F(t))/dt = 1.55\%$); low immigration is characterized by an immigration rates equals to the average immigration rate minus one standard deviation (0.60\%); and high immigration as the average immigration rate plus one standard deviation (2.50\%).
+
+\begin{table}[H] 
+\small
+\centering
+\begin{tabular}{l||ccccc|c||ccccc|c||c} \hline
+Scenarios  & N(1.1) &+& N(1.2) &=& N(1)    & N(2)   & F(1.1) & + & F(1.2) &=& F(1)   & F(2)   & $d \ln(L(t))/dt$\\ \hline
+Low IM     & -0.23\% &+& 0.15\% &=& -0.08\% & 0.54\% & -0.02\% &+& 0.03\% &=& 0.01\% & 0.10\% & 0.57\% \\
+Avg. IM & -0.23\% &+& 0.15\% &=& -0.08\% & 0.54\% & -0.02\% &+& 0.03\% &=& 0.01\% & 0.25\% & 0.72\% \\
+High IM    & -0.23\% &+& 0.15\% &=& -0.08\% & 0.54\% & -0.02\% &+& 0.03\% &=& 0.01\% & 0.41\% & 0.88\% \\ \hline
+\end{tabular}
+\caption{Domestic labor force growth under different immigration scenarios (annual growth rates)} \label{tab:Im_Scenarios}
+\end{table}
+
+The table above assumed that everything else remained constant. In particular, the exercise assumed that the annual growth rate of the native labor force (i.e., the growth rate of $CLF^N(t)$) is equal to the average growth rate during the period 2006-2017, which is equal $0.55\%$ (see Table (\ref{tab:LNagr})).
+
+\begin{table}[H] 
+\centering 
+\begin{tabular}{c|cc} \hline
+Year          & $L^N$       & $d\ln(L^N(t))/dt$ \\ \hline
+2006          & 127,640,372 &                   \\
+2007          & 128,462,420 & 0.64\%            \\
+2008          & 131,779,229 & 2.55\%            \\
+2009          & 131,205,851 & -0.44\%           \\
+2010          & 130,470,989 & -0.56\%           \\
+2011          & 130,750,926 & 0.21\%            \\
+2012          & 131,740,210 & 0.75\%            \\
+2013          & 132,359,975 & 0.47\%            \\
+2014          & 132,791,940 & 0.33\%            \\
+2015          & 133,391,756 & 0.45\%            \\
+2016          & 134,248,099 & 0.64\%            \\
+2017          & 135,637,347 & 1.03\%            \\ \hline
+Avg. 2006-17 &             & 0.55\%            \\
+St. Dev. 2006-17  &             & 0.78\% \\ \hline
+\end{tabular}
+\caption{Data from ACS} \label{tab:LNagr}
+\end{table}
+
+Table (\ref{tab:diff_LNagr}) shows the effect of immigration on the total labor force growth under the same immigration scenarios considered before, for different labor force growth rates of the native population.
+
+\begin{table}[H] 
+\centering
+\begin{tabular}{l|llllll} \hline
+\multirow{2}{*}{} & \multicolumn{6}{c}{$d \ln(L^N(t))/dt$}           \\ \cline{2-7}
+                  & \textcolor{red}{0.55$\%$} & 0.50$\%$ & 0.45$\%$ & 0.40$\%$ & 0.35$\%$ & 0.30$\%$ \\ \hline
+Low IM            & 0.57$\%$ & 0.52$\%$ & 0.48$\%$ & 0.44$\%$ & 0.40$\%$ & 0.36$\%$ \\
+\textcolor{red}{Avg IM}            & \textcolor{red}{0.72$\%$} & 0.68$\%$ & 0.64$\%$ & 0.60$\%$ & 0.55$\%$ & 0.51$\%$ \\
+High IM           & 0.88$\%$ & 0.83$\%$ & 0.79$\%$ & 0.75$\%$ & 0.71$\%$ & 0.67$\%$ \\ \hline
+\end{tabular}
+\caption{2006-2017 average values in red (annual growth rates)} \label{tab:diff_LNagr}
+\end{table}
+
+Perhaps the most likely scenario to expect by 2027 is one in which the native labor force grows at 0.40\% per year.\footnote{I am not aware of projections of $d \ln(L^N(t))/dt$, i.e, projections of labor force growth only for U.S. natives. The BLS constructs projections of several labor market variables for the next 10 years. For instance, the BLS reports projections of civilian labor force participation rates by age, sex, race, and ethnicity (refer to \url{https://www.bls.gov/emp/data/labor-force.htm}). For white non-Hispanic, the BLS projects an average annual growth rate of civilian labor force of -0.40\% during the period 2016--2026. This figure is consistent with an annual growth rate of $L^N(t)$ of roughly 0.30\%.}
+
+Alternatively, using expression (\ref{decomposition}), we could answer the following question: What would be the level of immigration required to maintain a 0.72\% labor force growth rate (average growth rate during the period 2006-2017) if the labor force growth rate of native workers ($d\ln(\alpha^N(t)/dt$) is $x\%$ (and everything else is constant)? The table below shows the results.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  $d\ln(\alpha^N(t)/dt)$ & $d \ln(P^F(t)/dt = IM(t)/P^F(t)$ \\ \hline
+  \textcolor{red}{-0.10\%} & \textcolor{red}{1.55\%} \\
+  -0.15\% & 1.82\% \\
+  -0.20\% & 2.08\% \\
+  -0.25\% & 2.33\% \\
+  -0.30\% & 2.59\% \\
+  \hline
+\end{tabular}
+\caption{Average $d\ln(\alpha^N(t)/dt)$ during the period 2006-2017 in red (annual growth rates)}
+\end{table}
+The numbers shown on the second column of the table are consistent with immigration inflows that are substantially larger than those observed (on average) during the 2006-2017 period.
+
+\newpage
+
+\section{General decomposition}
+
+
+
+\end{document}
+
