@@ -1,0 +1,42 @@
+# sympy_deriv_example.py
+from sympy import symbols, diff, sin, exp, Derivative, lambdify, simplify
+
+# 1) declare symbols
+x, y = symbols('x y')
+
+# 2) define a single-variable function expression
+f = x**3 * sin(x)
+
+# 3) symbolic derivative
+df = diff(f, x)
+print("Symbolic derivative df/dx =", df)  # 3*x**2*sin(x) + x**3*cos(x)
+
+# 4) make a numeric callable function from the symbolic derivative
+#    (uses numpy under the hood if you pass arrays; you can use "math" or "mpmath" too)
+fprime_num = lambdify(x, df, 'numpy')
+print("f'(1.0) numeric =", fprime_num(1.0))
+
+# 5) higher derivative (second derivative)
+d2f = diff(f, x, 2)
+print("Second derivative d2f/dx2 =", simplify(d2f))
+
+# 6) Derivative object (can be left unevaluated, or .doit() to compute)
+df_obj = Derivative(f, x)
+print("Derivative object (unevaluated) =", df_obj)
+print("Derivative object evaluated with doit() =", df_obj.doit())
+
+# 7) evaluate derivative at a point using subs and evalf
+value_at_half = df.subs(x, 0.5).evalf()
+print("Symbolic derivative evaluated at x=0.5 =", value_at_half)
+
+# 8) multivariable / partial derivative example
+g = x**2 * y + exp(x * y)
+dg_dx = diff(g, x)   # partial derivative with respect to x
+dg_dy = diff(g, y)   # partial derivative with respect to y
+print("g = ", g)
+print("partial g / partial x =", dg_dx)
+print("partial g / partial y =", dg_dy)
+
+# 9) make a numeric function for a multivariable partial derivative
+dg_dx_num = lambdify((x, y), dg_dx, 'numpy')
+print("dg/dx at (x=1.0,y=2.0) numeric =", dg_dx_num(1.0, 2.0))
